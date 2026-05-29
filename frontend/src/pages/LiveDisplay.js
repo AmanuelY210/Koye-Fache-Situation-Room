@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import api from '../utils/api';
-import { subscribeToCounter, getSocketUrl } from '../utils/socketHelper';
+import { getBaseUrl } from '../utils/api';
+import { subscribeToCounter } from '../utils/socketHelper';
 
 const LiveDisplay = () => {
   const [count, setCount] = useState(0);
@@ -21,7 +22,6 @@ const LiveDisplay = () => {
   });
   const [displayCount, setDisplayCount] = useState(0);
   const animationRef = useRef(null);
-  const socketUrl = getSocketUrl();
 
   useEffect(() => {
     const loadData = async () => {
@@ -85,7 +85,7 @@ const LiveDisplay = () => {
         {settings.logo && (
           <div className="mb-4" style={{ animation: 'fadeInDown 1s ease' }}>
             <img
-              src={`${socketUrl}/uploads/${settings.logo}`}
+              src={`${getBaseUrl()}/uploads/${settings.logo}`}
               alt="Party Logo"
               style={{ maxHeight: '150px', maxWidth: '300px', objectFit: 'contain', filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.3))' }}
             />
