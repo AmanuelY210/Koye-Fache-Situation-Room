@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "🚀 Backend (Node.js)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/backend",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--watch"],
+      "program": "${workspaceFolder}/backend/server.js",
+      "env": {
+        "PORT": "5000",
+        "DB_HOST": "localhost",
+        "DB_USER": "root",
+        "DB_PASSWORD": "",
+        "DB_NAME": "live_electors",
+        "JWT_SECRET": "koye_fache_party_live_count_2026",
+        "JWT_EXPIRES_IN": "24h"
+      },
+      "outputCapture": "std",
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "🎨 Frontend (React)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/frontend",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["react-scripts", "start"],
+      "env": {
+        "BROWSER": "none",
+        "PORT": "3000",
+        "REACT_APP_API_URL": "http://localhost:5000/api"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "🔧 Backend + Frontend (Both)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "start cmd /c \"cd backend && node server.js\" & start cmd /c \"cd frontend && npx react-scripts start\""],
+      "console": "integratedTerminal",
+      "preLaunchTask": "Install Dependencies"
+    }
+  ]
+}

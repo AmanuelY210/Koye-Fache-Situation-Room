@@ -1,0 +1,108 @@
+{
+  // Editor
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "files.autoSave": "off",
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/build": true,
+    "**/.git": true
+  },
+
+  // Files
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // JavaScript / React
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ESLint
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "eslint.alwaysShowStatus": true,
+
+  // Prettier
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none",
+  "prettier.printWidth": 120,
+  "prettier.tabWidth": 2,
+  "prettier.semi": true,
+  "prettier.bracketSpacing": true,
+  "prettier.arrowParens": "always",
+
+  // Terminal
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.scrollback": 5000,
+  "terminal.integrated.fontSize": 13,
+
+  // NPM
+  "npm.packageManager": "npm",
+  "npm.autoDetect": "on",
+  "npm-intellisense.importES6": true,
+  "npm-intellisense.importQuotes": "'",
+  "npm-intellisense.importLinebreak": ";\r\n",
+
+  // Path Intelligence
+  "path-intellisense.extensionOnImport": true,
+  "path-intellisense.mappings": {
+    "@": "${workspaceFolder}/frontend/src"
+  },
+
+  // Debug
+  "debug.javascript.codelens.npmScripts": "all",
+  "debug.internalConsoleOptions": "neverOpen",
+
+  // Emmet
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+
+  // Explorer
+  "explorer.confirmDelete": true,
+  "explorer.confirmDragAndDrop": true,
+
+  // Search
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/build": true,
+    "**/deploy": true
+  },
+
+  // Workbench
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "none",
+  "workbench.editor.enablePreview": false,
+  "workbench.sideBar.location": "left",
+
+  // Window
+  "window.title": "${dirty}${activeEditorShort}${separator}Koye Fache ${separator}${rootName}",
+  "window.zoomLevel": 0,
+
+  // Git
+  "git.enabled": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+
+  // NPM Scripts Explorer
+  "npm.scriptsExplorerAction": "open"
+}

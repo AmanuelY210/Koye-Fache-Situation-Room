@@ -1,0 +1,26 @@
+{
+  "folders": [
+    {
+      "name": "Koye Fache - Party Live Count",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "window.title": "Koye Fache - Live Electors"
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "ms-vscode.vscode-typescript-next",
+      "dsznajder.es7-react-js-snippets",
+      "christian-kohler.path-intellisense",
+      "christian-kohler.npm-intellisense",
+      "streetsidesoftware.code-spell-checker",
+      "formulahendry.auto-rename-tag",
+      "xabikos.JavaScriptSnippets",
+      "pkief.material-icon-theme",
+      "rangav.vscode-thunder-client"
+    ]
+  }
+}
