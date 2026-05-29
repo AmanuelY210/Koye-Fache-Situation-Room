@@ -78,6 +78,11 @@ CREATE TABLE `settings` (
   `counter_color` VARCHAR(20) DEFAULT '#e94560',
   `screen_background` VARCHAR(20) DEFAULT '#0f3460',
   `theme` VARCHAR(20) DEFAULT 'light',
+  `countdown_enabled` TINYINT(1) DEFAULT 0,
+  `countdown_title` VARCHAR(255) DEFAULT 'Days Left',
+  `countdown_target_date` DATETIME DEFAULT NULL,
+  `phone1` VARCHAR(50) DEFAULT '09-84-19-40-54',
+  `phone2` VARCHAR(50) DEFAULT '09-40-96-77-77',
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -98,14 +103,18 @@ CREATE TABLE `audit_logs` (
 INSERT INTO `settings` (
   `id`, `logo`, `header_text`, `subtitle_text`, `footer_text`,
   `theme`, `background_color`, `text_color`, `card_color`,
-  `header_color`, `counter_color`, `screen_background`
+  `header_color`, `counter_color`, `screen_background`,
+  `countdown_enabled`, `countdown_title`, `countdown_target_date`,
+  `phone1`, `phone2`
 ) VALUES (
   1, NULL,
   'KOYE FACHE PROSPERITY PARTY',
   'LIVE ELECTORS COUNT',
   'Developed By Amanuel ICT Solution',
   'light', '#ffffff', '#1a1a2e', '#f8f9fa',
-  '#e94560', '#e94560', '#ffffff'
+  '#e94560', '#e94560', '#ffffff',
+  0, 'Days Left', DATE_ADD(NOW(), INTERVAL 30 DAY),
+  '09-84-19-40-54', '09-40-96-77-77'
 );
 
 -- ---------------------------------------------

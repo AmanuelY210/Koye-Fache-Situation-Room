@@ -18,9 +18,15 @@ const LiveDisplay = () => {
     header_color: '#e94560',
     header_font_size: '48px',
     header_font_style: 'Arial',
-    font_family: 'Arial'
+    font_family: 'Arial',
+    countdown_enabled: 0,
+    countdown_title: 'Days Left',
+    countdown_target_date: null,
+    phone1: '09-84-19-40-54',
+    phone2: '09-40-96-77-77'
   });
   const [displayCount, setDisplayCount] = useState(0);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const animationRef = useRef(null);
 
   useEffect(() => {
@@ -45,6 +51,24 @@ const LiveDisplay = () => {
     });
     return cleanup;
   }, []);
+
+  useEffect(() => {
+    if (!settings.countdown_enabled || !settings.countdown_target_date) return;
+    const target = new Date(settings.countdown_target_date).getTime();
+    const update = () => {
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60)
+      });
+    };
+    update();
+    const timer = setInterval(update, 1000);
+    return () => clearInterval(timer);
+  }, [settings.countdown_enabled, settings.countdown_target_date]);
 
   const animateCount = (target) => {
     if (animationRef.current) cancelAnimationFrame(animationRef.current);
@@ -132,6 +156,67 @@ const LiveDisplay = () => {
         }}>
           {settings.subtitle_text || 'TOTAL ELECTORS'}
         </div>
+
+        {settings.countdown_enabled !== 0 && settings.countdown_target_date && (
+          <div style={{
+            marginTop: '30px',
+            animation: 'fadeInUp 2s ease'
+          }}>
+            <div style={{
+              fontSize: '22px',
+              color: settings.header_color || '#ffffff',
+              fontWeight: '600',
+              letterSpacing: '3px',
+              textTransform: 'uppercase',
+              marginBottom: '15px',
+              opacity: 0.9
+            }}>
+              {settings.countdown_title || 'Days Left'}
+            </div>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '20px',
+              flexWrap: 'wrap'
+            }}>
+              {[
+                { label: 'Days', value: timeLeft.days },
+                { label: 'Hours', value: timeLeft.hours },
+                { label: 'Minutes', value: timeLeft.minutes },
+                { label: 'Seconds', value: timeLeft.seconds }
+              ].map((unit) => (
+                <div key={unit.label} style={{
+                  background: 'rgba(233, 69, 96, 0.15)',
+                  border: '1px solid rgba(233, 69, 96, 0.3)',
+                  borderRadius: '12px',
+                  padding: '15px 20px',
+                  minWidth: '100px',
+                  textAlign: 'center'
+                }}>
+                  <div style={{
+                    fontSize: '36px',
+                    fontWeight: '900',
+                    color: settings.counter_color || '#e94560',
+                    fontFamily: 'monospace',
+                    lineHeight: 1.2
+                  }}>
+                    {String(unit.value).padStart(2, '0')}
+                  </div>
+                  <div style={{
+                    fontSize: '12px',
+                    color: 'rgba(255,255,255,0.6)',
+                    fontWeight: '600',
+                    letterSpacing: '2px',
+                    textTransform: 'uppercase',
+                    marginTop: '4px'
+                  }}>
+                    {unit.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {settings.footer_enabled !== 0 && (
@@ -142,7 +227,12 @@ const LiveDisplay = () => {
           textAlign: 'center',
           animation: 'fadeIn 2s ease'
         }}>
-          {settings.footer_text || 'Developed By Amanuel ICT Solution'}
+          <div>{settings.footer_text || 'Developed By Amanuel ICT Solution'}</div>
+          <div style={{ marginTop: '8px', fontSize: '14px', opacity: 0.7 }}>
+            {settings.phone1 && <span>{settings.phone1}</span>}
+            {settings.phone1 && settings.phone2 && <span> &nbsp;|&nbsp; </span>}
+            {settings.phone2 && <span>{settings.phone2}</span>}
+          </div>
         </div>
       )}
 

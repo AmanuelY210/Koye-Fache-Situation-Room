@@ -25,7 +25,12 @@ exports.getSettings = async (req, res) => {
         counter_size: '120px',
         counter_color: '#e94560',
         screen_background: '#0f3460',
-        theme: 'dark'
+        theme: 'dark',
+        countdown_enabled: 0,
+        countdown_title: 'Days Left',
+        countdown_target_date: null,
+        phone1: '09-84-19-40-54',
+        phone2: '09-40-96-77-77'
       });
     }
     res.json(rows[0]);
@@ -43,7 +48,9 @@ exports.updateSettings = async (req, res) => {
       'header_font_size', 'header_font_style', 'header_color',
       'background_color', 'text_color', 'card_color', 'button_style',
       'font_family', 'layout', 'counter_size', 'counter_color',
-      'screen_background', 'theme'
+      'screen_background', 'theme',
+      'countdown_enabled', 'countdown_title', 'countdown_target_date',
+      'phone1', 'phone2'
     ];
 
     let query = 'UPDATE settings SET ';

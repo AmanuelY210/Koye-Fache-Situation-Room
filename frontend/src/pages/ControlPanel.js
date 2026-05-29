@@ -130,6 +130,14 @@ const ControlPanel = () => {
                 <label className="form-label text-white-50 small">Footer Text</label>
                 <input type="text" className="form-control" style={inputStyle} value={form.footer_text} onChange={(e) => setForm({ ...form, footer_text: e.target.value })} />
               </div>
+              <div className="mb-3">
+                <label className="form-label text-white-50 small">Phone Number 1</label>
+                <input type="text" className="form-control" style={inputStyle} value={form.phone1 || ''} onChange={(e) => setForm({ ...form, phone1: e.target.value })} />
+              </div>
+              <div className="mb-3">
+                <label className="form-label text-white-50 small">Phone Number 2</label>
+                <input type="text" className="form-control" style={inputStyle} value={form.phone2 || ''} onChange={(e) => setForm({ ...form, phone2: e.target.value })} />
+              </div>
               <div className="form-check form-switch">
                 <input className="form-check-input" type="checkbox" role="switch" id="footerEnabled" checked={form.footer_enabled === 1 || form.footer_enabled === true} onChange={(e) => setForm({ ...form, footer_enabled: e.target.checked ? 1 : 0 })} />
                 <label className="form-check-label text-white-50 small" htmlFor="footerEnabled">Footer Enabled</label>
@@ -204,6 +212,28 @@ const ControlPanel = () => {
                     <option value="classic">Classic</option>
                     <option value="minimal">Minimal</option>
                   </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-12">
+            <div style={sectionStyle}>
+              <h5 className="fw-bold mb-3" style={{ color: '#e94560' }}><i className="bi bi-clock me-2"></i>Countdown Settings</h5>
+              <div className="row g-3">
+                <div className="col-md-3">
+                  <div className="form-check form-switch mt-2">
+                    <input className="form-check-input" type="checkbox" role="switch" id="countdownEnabled" checked={form.countdown_enabled === 1 || form.countdown_enabled === true} onChange={(e) => setForm({ ...form, countdown_enabled: e.target.checked ? 1 : 0 })} />
+                    <label className="form-check-label text-white-50 small" htmlFor="countdownEnabled">Enable Countdown</label>
+                  </div>
+                </div>
+                <div className="col-md-3">
+                  <label className="form-label text-white-50 small">Title</label>
+                  <input type="text" className="form-control" style={inputStyle} value={form.countdown_title || 'Days Left'} onChange={(e) => setForm({ ...form, countdown_title: e.target.value })} />
+                </div>
+                <div className="col-md-6">
+                  <label className="form-label text-white-50 small">Target Date</label>
+                  <input type="datetime-local" className="form-control" style={inputStyle} value={form.countdown_target_date ? form.countdown_target_date.substring(0, 16) : ''} onChange={(e) => setForm({ ...form, countdown_target_date: e.target.value ? e.target.value + ':00' : null })} />
                 </div>
               </div>
             </div>
