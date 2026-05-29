@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
+import { getBaseUrl } from '../utils/api';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -30,7 +31,7 @@ const Navbar = () => {
       <div className="container-fluid px-4">
           <Link className="navbar-brand fw-bold d-flex align-items-center gap-2" to={isAdmin ? '/admin' : '/dashboard'} style={{ color: settings.text_color || '#fff', fontSize: '1.2rem' }}>
             {settings.logo ? (
-              <img src={`http://localhost:5000/uploads/${settings.logo}`} alt="Logo" style={{ height: '35px' }} />
+              <img src={`${getBaseUrl()}/uploads/${settings.logo}`} alt="Logo" style={{ height: '35px' }} />
             ) : (
               <i className="bi bi-bar-chart-fill fs-4" style={{ color: settings.counter_color || '#e94560' }}></i>
             )}

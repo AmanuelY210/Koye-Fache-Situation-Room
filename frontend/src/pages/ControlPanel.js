@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
 import { useTheme } from '../contexts/ThemeContext';
+import { getBaseUrl } from '../utils/api';
 
 const ControlPanel = () => {
   const { settings, loadSettings } = useTheme();
@@ -83,7 +84,7 @@ const ControlPanel = () => {
               <h5 className="fw-bold mb-3" style={{ color: '#e94560' }}><i className="bi bi-image me-2"></i>Logo Management</h5>
               {settings.logo && (
                 <div className="mb-3 text-center">
-                  <img src={`http://localhost:5000/uploads/${settings.logo}`} alt="Logo" style={{ maxHeight: '80px', maxWidth: '200px' }} className="mb-2" />
+                  <img src={`${getBaseUrl()}/uploads/${settings.logo}`} alt="Logo" style={{ maxHeight: '80px', maxWidth: '200px' }} className="mb-2" />
                   <button type="button" className="btn btn-sm btn-outline-danger d-block mx-auto" onClick={handleRemoveLogo}>Remove Logo</button>
                 </div>
               )}

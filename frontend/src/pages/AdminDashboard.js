@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import io from 'socket.io-client';
 import api from '../utils/api';
+import { subscribeToCounter } from '../utils/socketHelper';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);
@@ -20,11 +20,10 @@ const AdminDashboard = () => {
     };
     load();
 
-    const socket = io('http://localhost:5000');
-    socket.on('counter-update', (data) => {
-      setLiveCount(data.totalApprovedElectors);
+    const cleanup = subscribeToCounter((newCount) => {
+      setLiveCount(newCount);
     });
-    return () => socket.disconnect();
+    return cleanup;
   }, []);
 
   const cardStyle = {

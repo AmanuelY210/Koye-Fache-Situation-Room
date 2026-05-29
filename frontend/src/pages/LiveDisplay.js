@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import io from 'socket.io-client';
 import api from '../utils/api';
+import { subscribeToCounter, getSocketUrl } from '../utils/socketHelper';
 
 const LiveDisplay = () => {
   const [count, setCount] = useState(0);
@@ -21,6 +21,7 @@ const LiveDisplay = () => {
   });
   const [displayCount, setDisplayCount] = useState(0);
   const animationRef = useRef(null);
+  const socketUrl = getSocketUrl();
 
   useEffect(() => {
     const loadData = async () => {
@@ -38,13 +39,11 @@ const LiveDisplay = () => {
   }, []);
 
   useEffect(() => {
-    const socket = io('http://localhost:5000');
-    socket.on('counter-update', (data) => {
-      const newCount = Number(data.totalApprovedElectors) || 0;
+    const cleanup = subscribeToCounter((newCount) => {
       setCount(newCount);
       animateCount(newCount);
     });
-    return () => socket.disconnect();
+    return cleanup;
   }, []);
 
   const animateCount = (target) => {
@@ -86,7 +85,7 @@ const LiveDisplay = () => {
         {settings.logo && (
           <div className="mb-4" style={{ animation: 'fadeInDown 1s ease' }}>
             <img
-              src={`http://localhost:5000/uploads/${settings.logo}`}
+              src={`${socketUrl}/uploads/${settings.logo}`}
               alt="Party Logo"
               style={{ maxHeight: '150px', maxWidth: '300px', objectFit: 'contain', filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.3))' }}
             />

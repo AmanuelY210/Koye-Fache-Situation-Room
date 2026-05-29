@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
+import { getBaseUrl } from '../utils/api';
 
 const Register = () => {
   const { settings } = useTheme();
@@ -72,7 +73,7 @@ const Register = () => {
           <div className="text-center mb-4">
             <div style={{ width: '70px', height: '70px', background: settings.counter_color || '#e94560', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 15px' }}>
               {settings.logo ? (
-                <img src={`http://localhost:5000/uploads/${settings.logo}`} alt="Logo" style={{ height: '40px', width: '40px', borderRadius: '50%', objectFit: 'cover' }} />
+                <img src={`${getBaseUrl()}/uploads/${settings.logo}`} alt="Logo" style={{ height: '40px', width: '40px', borderRadius: '50%', objectFit: 'cover' }} />
               ) : (
                 <i className="bi bi-person-plus fs-1 text-white"></i>
               )}
