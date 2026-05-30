@@ -47,7 +47,7 @@ const AdminReports = () => {
     background: 'var(--bg-card)',
     border: '1px solid var(--border-color)',
     borderRadius: '15px',
-    padding: '24px'
+    padding: 'clamp(12px, 3vw, 24px)'
   };
 
   return (

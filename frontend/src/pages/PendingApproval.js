@@ -14,8 +14,8 @@ const PendingApproval = () => {
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: `linear-gradient(135deg, ${bgMain} 0%, ${isLight ? '#f0f0f0' : '#16213e'} 50%, ${isLight ? '#e8e8e8' : '#0f3460'} 100%)`, padding: '20px' }}>
       <div className="card border-0 shadow-lg" style={{ maxWidth: '500px', width: '100%', borderRadius: '20px', background: bgCard, backdropFilter: 'blur(20px)', border: `1px solid ${isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.1)'}` }}>
         <div className="card-body p-5 text-center">
-          <div style={{ width: '80px', height: '80px', background: '#ffc107', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
-            <i className="bi bi-hourglass-split fs-1 text-dark"></i>
+          <div className="login-logo-circle" style={{ width: 'clamp(60px, 12vw, 80px)', height: 'clamp(60px, 12vw, 80px)', background: '#ffc107', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+            <i className="bi bi-hourglass-split text-dark" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)' }}></i>
           </div>
           <h3 className="fw-bold mb-3" style={{ color: textColor }}>Account Pending Approval</h3>
           <p style={{ color: textMuted }} className="mb-4">Your account is currently pending approval from the administrator. You will be able to submit electors numbers once your account is approved. Please check back later.</p>

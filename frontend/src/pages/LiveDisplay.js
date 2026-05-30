@@ -108,11 +108,12 @@ const LiveDisplay = () => {
       <div className="text-center px-4" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {settings.logo && (
           <div className="mb-4" style={{ animation: 'fadeInDown 1s ease' }}>
-            <img
-              src={`${getBaseUrl()}/uploads/${settings.logo}`}
-              alt="Party Logo"
-              style={{ maxHeight: '150px', maxWidth: '300px', objectFit: 'contain', filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.3))' }}
-            />
+              <img
+                src={`${getBaseUrl()}/uploads/${settings.logo}`}
+                alt="Party Logo"
+                className="live-logo"
+                style={{ maxHeight: '150px', maxWidth: '90vw', objectFit: 'contain', filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.3))' }}
+              />
           </div>
         )}
 
@@ -185,12 +186,13 @@ const LiveDisplay = () => {
                 { label: 'Minutes', value: timeLeft.minutes },
                 { label: 'Seconds', value: timeLeft.seconds }
               ].map((unit) => (
-                <div key={unit.label} style={{
+                <div key={unit.label} className="countdown-unit" style={{
                   background: 'rgba(233, 69, 96, 0.15)',
                   border: '1px solid rgba(233, 69, 96, 0.3)',
                   borderRadius: '12px',
                   padding: '15px 20px',
-                  minWidth: '100px',
+                  minWidth: '80px',
+                  flex: '0 1 auto',
                   textAlign: 'center'
                 }}>
                   <div style={{
@@ -252,6 +254,17 @@ const LiveDisplay = () => {
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.85; }
+        }
+        @media (max-width: 768px) {
+          .live-logo { max-height: 100px !important; }
+          .countdown-unit { min-width: 65px !important; padding: 10px 12px !important; }
+          .countdown-unit div:first-child { font-size: 28px !important; }
+        }
+        @media (max-width: 480px) {
+          .live-logo { max-height: 70px !important; }
+          .countdown-unit { min-width: 55px !important; padding: 8px 8px !important; }
+          .countdown-unit div:first-child { font-size: 22px !important; }
+          .countdown-unit div:last-child { font-size: 10px !important; }
         }
       `}</style>
     </div>

@@ -67,7 +67,7 @@ const AdminUsers = () => {
           <p className="text-secondary mb-0 small">Manage all registered users</p>
         </div>
         <div className="d-flex gap-2">
-          <input type="text" className="form-control bg-dark border-secondary text-white" style={{ width: '250px' }} placeholder="Search by name, username, email..." value={search} onChange={(e) => setSearch(e.target.value)} onKeyUp={(e) => e.key === 'Enter' && loadUsers()} />
+          <input type="text" className="form-control bg-dark border-secondary text-white" style={{ width: '250px', maxWidth: '100%' }} placeholder="Search by name, username, email..." value={search} onChange={(e) => setSearch(e.target.value)} onKeyUp={(e) => e.key === 'Enter' && loadUsers()} />
           <button className="btn border-0 fw-semibold px-3" style={{ background: '#e94560', color: '#fff', borderRadius: '10px' }} onClick={loadUsers}><i className="bi bi-search"></i></button>
         </div>
       </div>

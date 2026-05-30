@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="container-fluid px-4">
           <Link className="navbar-brand fw-bold d-flex align-items-center gap-2" to={isAdmin ? '/admin' : '/dashboard'} style={{ color: settings.text_color || '#fff', fontSize: '1.2rem' }}>
             {settings.logo ? (
-              <img src={`${getBaseUrl()}/uploads/${settings.logo}`} alt="Logo" style={{ height: '35px' }} />
+              <img src={`${getBaseUrl()}/uploads/${settings.logo}`} alt="Logo" className="navbar-logo" style={{ height: 'clamp(25px, 4vw, 35px)' }} />
             ) : (
               <i className="bi bi-bar-chart-fill fs-4" style={{ color: settings.counter_color || '#e94560' }}></i>
             )}

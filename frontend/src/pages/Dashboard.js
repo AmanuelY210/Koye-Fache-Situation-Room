@@ -35,35 +35,35 @@ const Dashboard = () => {
       </div>
 
       <div className="row g-3 mb-4">
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-4 text-center" style={cardStyle}>
-            <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#e94560' }}>{stats?.totalSubmissions ?? 0}</div>
+            <div className="stat-number" style={{ fontSize: '2.5rem', fontWeight: '800', color: '#e94560' }}>{stats?.totalSubmissions ?? 0}</div>
             <div className="text-secondary small mt-1"><i className="bi bi-file-earmark me-1"></i>My Submissions</div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-4 text-center" style={cardStyle}>
-            <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#28a745' }}>{stats?.approvedSubmissions ?? 0}</div>
+            <div className="stat-number" style={{ fontSize: '2.5rem', fontWeight: '800', color: '#28a745' }}>{stats?.approvedSubmissions ?? 0}</div>
             <div className="text-secondary small mt-1"><i className="bi bi-check-circle me-1"></i>Approved</div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-4 text-center" style={cardStyle}>
-            <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#ffc107' }}>{stats?.pendingSubmissions ?? 0}</div>
+            <div className="stat-number" style={{ fontSize: '2.5rem', fontWeight: '800', color: '#ffc107' }}>{stats?.pendingSubmissions ?? 0}</div>
             <div className="text-secondary small mt-1"><i className="bi bi-clock me-1"></i>Pending</div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-4 text-center" style={cardStyle}>
-            <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#dc3545' }}>{stats?.rejectedSubmissions ?? 0}</div>
+            <div className="stat-number" style={{ fontSize: '2.5rem', fontWeight: '800', color: '#dc3545' }}>{stats?.rejectedSubmissions ?? 0}</div>
             <div className="text-secondary small mt-1"><i className="bi bi-x-circle me-1"></i>Rejected</div>
           </div>
         </div>
       </div>
 
-      <div className="card p-5 text-center" style={cardStyle}>
+      <div className="card p-5 text-center total-electors-card" style={cardStyle}>
         <div className="text-secondary mb-2">Your Total Approved Electors</div>
-        <div style={{ fontSize: '4rem', fontWeight: '900', color: '#e94560', lineHeight: 1 }}>
+        <div className="total-electors-number" style={{ fontSize: 'clamp(2rem, 6vw, 4rem)', fontWeight: '900', color: '#e94560', lineHeight: 1 }}>
           {stats?.totalApprovedElectors?.toLocaleString() ?? 0}
         </div>
         <div className="text-secondary small mt-2">ELECTORS</div>

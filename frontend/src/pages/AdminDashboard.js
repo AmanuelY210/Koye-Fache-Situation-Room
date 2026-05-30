@@ -49,7 +49,7 @@ const AdminDashboard = () => {
         <div className="col-md-12">
           <div className="card p-4 text-center" style={{ ...cardStyle, border: `2px solid ${liveCount > 0 ? '#e94560' : '#333'}` }}>
             <div className="text-secondary small mb-2">TOTAL APPROVED ELECTORS (LIVE)</div>
-            <div style={{ fontSize: '3.5rem', fontWeight: '900', color: '#e94560', lineHeight: 1, fontFamily: 'monospace' }}>
+            <div className="live-count-number" style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: '900', color: '#e94560', lineHeight: 1, fontFamily: 'monospace' }}>
               {liveCount?.toLocaleString() ?? 0}
             </div>
             <div className="d-flex justify-content-center gap-3 mt-2">
@@ -63,51 +63,51 @@ const AdminDashboard = () => {
       </div>
 
       <div className="row g-3">
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-3 text-center" style={cardStyle}>
-            <div className="fw-bold" style={{ fontSize: '1.8rem', color: '#e94560' }}>{stats?.totalUsers ?? 0}</div>
+            <div className="fw-bold stat-number-admin" style={{ fontSize: '1.8rem', color: '#e94560' }}>{stats?.totalUsers ?? 0}</div>
             <div className="text-secondary small">Total Users</div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-3 text-center" style={cardStyle}>
-            <div className="fw-bold" style={{ fontSize: '1.8rem', color: '#ffc107' }}>{stats?.pendingUsers ?? 0}</div>
+            <div className="fw-bold stat-number-admin" style={{ fontSize: '1.8rem', color: '#ffc107' }}>{stats?.pendingUsers ?? 0}</div>
             <div className="text-secondary small">Pending Users</div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-3 text-center" style={cardStyle}>
-            <div className="fw-bold" style={{ fontSize: '1.8rem', color: '#28a745' }}>{stats?.approvedUsers ?? 0}</div>
+            <div className="fw-bold stat-number-admin" style={{ fontSize: '1.8rem', color: '#28a745' }}>{stats?.approvedUsers ?? 0}</div>
             <div className="text-secondary small">Approved Users</div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-3 text-center" style={cardStyle}>
-            <div className="fw-bold" style={{ fontSize: '1.8rem', color: '#dc3545' }}>{stats?.suspendedUsers ?? 0}</div>
+            <div className="fw-bold stat-number-admin" style={{ fontSize: '1.8rem', color: '#dc3545' }}>{stats?.suspendedUsers ?? 0}</div>
             <div className="text-secondary small">Suspended Users</div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-3 text-center" style={cardStyle}>
-            <div className="fw-bold" style={{ fontSize: '1.8rem', color: '#0dcaf0' }}>{stats?.totalSubmissions ?? 0}</div>
+            <div className="fw-bold stat-number-admin" style={{ fontSize: '1.8rem', color: '#0dcaf0' }}>{stats?.totalSubmissions ?? 0}</div>
             <div className="text-secondary small">Total Submissions</div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-3 text-center" style={cardStyle}>
-            <div className="fw-bold" style={{ fontSize: '1.8rem', color: '#ffc107' }}>{stats?.pendingSubmissions ?? 0}</div>
+            <div className="fw-bold stat-number-admin" style={{ fontSize: '1.8rem', color: '#ffc107' }}>{stats?.pendingSubmissions ?? 0}</div>
             <div className="text-secondary small">Pending Electors</div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-3 text-center" style={cardStyle}>
-            <div className="fw-bold" style={{ fontSize: '1.8rem', color: '#28a745' }}>{stats?.approvedSubmissions ?? 0}</div>
+            <div className="fw-bold stat-number-admin" style={{ fontSize: '1.8rem', color: '#28a745' }}>{stats?.approvedSubmissions ?? 0}</div>
             <div className="text-secondary small">Approved Electors</div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-6 col-md-3">
           <div className="card p-3 text-center" style={cardStyle}>
-            <div className="fw-bold" style={{ fontSize: '1.8rem', color: '#dc3545' }}>{stats?.rejectedSubmissions ?? 0}</div>
+            <div className="fw-bold stat-number-admin" style={{ fontSize: '1.8rem', color: '#dc3545' }}>{stats?.rejectedSubmissions ?? 0}</div>
             <div className="text-secondary small">Rejected Electors</div>
           </div>
         </div>

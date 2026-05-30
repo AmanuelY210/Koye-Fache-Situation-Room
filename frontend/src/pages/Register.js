@@ -54,8 +54,8 @@ const Register = () => {
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: `linear-gradient(135deg, ${bgMain} 0%, ${isLight ? '#f0f0f0' : '#16213e'} 50%, ${isLight ? '#e8e8e8' : '#0f3460'} 100%)`, padding: '20px' }}>
         <div className="card border-0 shadow-lg" style={{ maxWidth: '450px', width: '100%', borderRadius: '20px', background: bgCard, backdropFilter: 'blur(20px)', border: `1px solid ${isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.1)'}` }}>
           <div className="card-body p-5 text-center">
-            <div style={{ width: '70px', height: '70px', background: '#28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 15px' }}>
-              <i className="bi bi-check-lg fs-1 text-white"></i>
+            <div className="login-logo-circle" style={{ width: 'clamp(50px, 10vw, 70px)', height: 'clamp(50px, 10vw, 70px)', background: '#28a745', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 15px' }}>
+              <i className="bi bi-check-lg text-white" style={{ fontSize: 'clamp(1.2rem, 4vw, 2rem)' }}></i>
             </div>
             <h3 className="fw-bold mb-3" style={{ color: textColor }}>Registration Successful!</h3>
             <p style={{ color: textMuted }} className="mb-4">Your account has been created and is pending approval. You will be able to login once an admin approves your account.</p>
@@ -71,11 +71,11 @@ const Register = () => {
       <div className="card border-0 shadow-lg" style={{ maxWidth: '500px', width: '100%', borderRadius: '20px', background: bgCard, backdropFilter: 'blur(20px)', border: `1px solid ${isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.1)'}` }}>
         <div className="card-body p-5">
           <div className="text-center mb-4">
-            <div style={{ width: '70px', height: '70px', background: settings.counter_color || '#e94560', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 15px' }}>
+            <div className="login-logo-circle" style={{ width: 'clamp(50px, 10vw, 70px)', height: 'clamp(50px, 10vw, 70px)', background: settings.counter_color || '#e94560', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 15px' }}>
               {settings.logo ? (
-                <img src={`${getBaseUrl()}/uploads/${settings.logo}`} alt="Logo" style={{ height: '40px', width: '40px', borderRadius: '50%', objectFit: 'cover' }} />
+                <img src={`${getBaseUrl()}/uploads/${settings.logo}`} alt="Logo" className="login-logo-img" style={{ height: 'clamp(28px, 5vw, 40px)', width: 'clamp(28px, 5vw, 40px)', borderRadius: '50%', objectFit: 'cover' }} />
               ) : (
-                <i className="bi bi-person-plus fs-1 text-white"></i>
+                <i className="bi bi-person-plus text-white" style={{ fontSize: 'clamp(1.2rem, 4vw, 2rem)' }}></i>
               )}
             </div>
             <h2 className="fw-bold" style={{ color: textColor }}>Create Account</h2>
