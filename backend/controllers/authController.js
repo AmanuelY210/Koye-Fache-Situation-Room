@@ -55,10 +55,12 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials.' });
     }
 
+    const secret = process.env.JWT_SECRET || 'fallback_dev_secret_change_in_production';
+    const expiresIn = process.env.JWT_EXPIRES_IN || '24h';
     const token = jwt.sign(
       { id: user.id, role: user.role },
-      process.env.JWT_SECRET,
-      { expiresIn: process.env.JWT_EXPIRES_IN }
+      secret,
+      { expiresIn }
     );
 
     await logAudit(user.id, 'User logged in');

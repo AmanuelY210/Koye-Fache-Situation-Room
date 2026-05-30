@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
@@ -12,11 +12,12 @@ const Login = () => {
   const { login, user } = useAuth();
   const navigate = useNavigate();
 
-  if (user) {
-    const isAdmin = user.role === 'admin' || user.role === 'super_admin';
-    navigate(isAdmin ? '/admin' : '/dashboard', { replace: true });
-    return null;
-  }
+  useEffect(() => {
+    if (user) {
+      const isAdmin = user.role === 'admin' || user.role === 'super_admin';
+      navigate(isAdmin ? '/admin' : '/dashboard', { replace: true });
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

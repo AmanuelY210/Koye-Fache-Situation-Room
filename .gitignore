@@ -3,6 +3,7 @@ build/
 deploy/
 deploy.zip
 .env
+**/.env
 backend/uploads/*
 !backend/uploads/.gitkeep
 *.log

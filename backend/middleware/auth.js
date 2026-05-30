@@ -9,7 +9,8 @@ const authenticate = async (req, res, next) => {
 
   const token = authHeader.split(' ')[1];
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const secret = process.env.JWT_SECRET || 'fallback_dev_secret_change_in_production';
+    const decoded = jwt.verify(token, secret);
     const [rows] = await db.query('SELECT id, full_name, username, email, phone, election_location, role, status FROM users WHERE id = ?', [decoded.id]);
     if (rows.length === 0) {
       return res.status(401).json({ message: 'Invalid token.' });

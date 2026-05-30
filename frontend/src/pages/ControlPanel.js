@@ -233,7 +233,7 @@ const ControlPanel = () => {
                 </div>
                 <div className="col-md-6">
                   <label className="form-label text-white-50 small">Target Date</label>
-                  <input type="datetime-local" className="form-control" style={inputStyle} value={form.countdown_target_date ? form.countdown_target_date.substring(0, 16) : ''} onChange={(e) => setForm({ ...form, countdown_target_date: e.target.value ? e.target.value + ':00' : null })} />
+                  <input type="datetime-local" className="form-control" style={inputStyle} value={form.countdown_target_date ? (typeof form.countdown_target_date === 'string' ? form.countdown_target_date.substring(0, 16) : new Date(form.countdown_target_date).toISOString().substring(0, 16)) : ''} onChange={(e) => setForm({ ...form, countdown_target_date: e.target.value ? e.target.value + ':00' : null })} />
                 </div>
               </div>
             </div>
