@@ -1,4 +1,5 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 const http = require('http');
 const { Server } = require('socket.io');
 const db = require('./config/database');
@@ -31,6 +32,7 @@ const startServer = async () => {
     await seedDatabase();
   } catch (err) {
     console.error('Database connection failed:', err.message);
+    process.exit(1);
   }
 
   server.listen(PORT, '0.0.0.0', () => {

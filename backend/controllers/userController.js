@@ -92,7 +92,15 @@ exports.updateUser = async (req, res) => {
   try {
     const { id } = req.params;
     const { full_name, email, phone, election_location } = req.body;
-    await db.query('UPDATE users SET full_name = ?, email = ?, phone = ?, election_location = ? WHERE id = ?', [full_name, email, phone, election_location || null, id]);
+    const fields = [];
+    const vals = [];
+    if (full_name !== undefined) { fields.push('full_name = ?'); vals.push(full_name); }
+    if (email !== undefined) { fields.push('email = ?'); vals.push(email); }
+    if (phone !== undefined) { fields.push('phone = ?'); vals.push(phone); }
+    if (election_location !== undefined) { fields.push('election_location = ?'); vals.push(election_location); }
+    if (fields.length === 0) return res.status(400).json({ message: 'No fields to update.' });
+    vals.push(id);
+    await db.query(`UPDATE users SET ${fields.join(', ')} WHERE id = ?`, vals);
     await logAudit(req.user.id, `Updated user ID: ${id}`);
     res.json({ message: 'User updated successfully.' });
   } catch (err) {

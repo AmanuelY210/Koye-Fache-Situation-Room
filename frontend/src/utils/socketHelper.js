@@ -1,10 +1,10 @@
 import io from 'socket.io-client';
-import api from './api';
+import api, { getBaseUrl } from './api';
 
 export const getSocketUrl = () => {
   return process.env.REACT_APP_API_URL
     ? process.env.REACT_APP_API_URL.replace('/api', '')
-    : window.location.origin;
+    : getBaseUrl().replace('/api', '');
 };
 
 export const subscribeToCounter = (callback) => {

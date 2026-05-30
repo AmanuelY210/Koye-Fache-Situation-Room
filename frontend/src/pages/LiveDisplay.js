@@ -28,6 +28,8 @@ const LiveDisplay = () => {
   const [displayCount, setDisplayCount] = useState(0);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const animationRef = useRef(null);
+  const displayCountRef = useRef(displayCount);
+  useEffect(() => { displayCountRef.current = displayCount; }, [displayCount]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -72,7 +74,7 @@ const LiveDisplay = () => {
 
   const animateCount = (target) => {
     if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    const start = displayCount;
+    const start = displayCountRef.current;
     const duration = 1000;
     const startTime = Date.now();
 
