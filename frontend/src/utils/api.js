@@ -2,10 +2,11 @@ import axios from 'axios';
 
 const getLocalApiUrl = () => {
   const origin = window.location.origin;
-  if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
-    return origin.replace(/:(\d+)/, ':5000') + '/api';
+  const match = origin.match(/:(\d+)/);
+  if (match) {
+    return origin.replace(match[0], ':5000') + '/api';
   }
-  return origin + '/api';
+  return origin.replace(/\/$/, '') + ':5000/api';
 };
 
 export const API_URL = process.env.REACT_APP_API_URL || getLocalApiUrl();

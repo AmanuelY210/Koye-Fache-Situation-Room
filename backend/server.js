@@ -33,8 +33,8 @@ const startServer = async () => {
     console.error('Database connection failed:', err.message);
   }
 
-  server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  server.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT} (0.0.0.0)`);
   });
 };
 
